@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+
+    <!-- insert data of country -->
+    <insert id="insertCoun" parameterType="com.lzz.Country">
+    insert into country values(#{country},#{population},#{sq_km_area},#{life_expectancy},#{elevation_in_meters},#{continent},#{abbreviation},#{location},#{iso},#{capital_city},#{confirmed},#{recovered},#{deaths})
+</insert>
+    <!-- insert data of province   -->
+    <insert id="insertProv" parameterType="com.lzz.Province">
+    insert into province values(#{country},#{province},#{lat},#{lon},#{confirmed},#{recovered},#{deaths},#{updated})
+</insert>
+    <!--  select data of province  -->
+    <select id="selectProv" parameterType="String" resultType="com.lzz.Province">
+        select * from province where province = #{province}
+    </select>
+    <!--  select data of country -->
+    <select id="selectCoun" parameterType="String" resultType="com.lzz.Country">
+        select * from country where country = #{country}
+    </select>
+
+</mapper>

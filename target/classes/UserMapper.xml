@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+
+    <!-- insert data of country -->
+    <insert id="insertCoun" parameterType="com.lzz.Country">
+    insert into country values(#{country},#{population},#{sq_km_area},#{life_expectancy},#{elevation_in_meters},#{continent},#{abbreviation},#{location},#{iso},#{capital_city},#{confirmed},#{recovered},#{deaths})
+</insert>
+    <!-- insert data of province   -->
+    <insert id="insertProv" parameterType="com.lzz.Province">
+    insert into province values(#{country},#{province},#{lat},#{lon},#{confirmed},#{recovered},#{deaths},#{updated})
+</insert>
+    <!--  select data of province  -->
+    <select id="selectProv" parameterType="String" resultType="com.lzz.Province">
+        select * from province where province = #{province}
+    </select>
+    <!--  select data of country -->
+    <select id="selectCoun" parameterType="String" resultType="com.lzz.Country">
+        select * from country where country = #{country}
+    </select>
+
+    <!--  update data of province  -->
+    <update id="updateProv">
+        update province
+        <set>
+            <if test="lat != null">lat=#{lat},</if>
+            <if test="lon != null">lon=#{lon}</if>
+            <if test="confirmed != null">confirmed=#{confirmed}</if>
+            <if test="recovered != null"> recovered=#{recovered}</if>
+            <if test="deaths != null">deaths=#{deaths}</if>
+            <if test="updated != null">updated=#{updated}</if>
+        </set>
+        where province = #{province}
+    </update>
+
+    <!--  update data of country -->
+    <update id="updateCoun">
+        update country
+        <set>
+            <if test="population != null">population=#{population},</if>
+            <if test="sq_km_area != null">sq_km_area=#{sq_km_area}</if>
+            <if test="life_expectancy != null">life_expectancy=#{life_expectancy}</if>
+            <if test="elevation_in_meters != null">elevation_in_meters=#{elevation_in_meters}</if>
+            <if test="iso != null">iso=#{iso}</if>
+            <if test="confirmed != null">confirmed=#{confirmed}</if>
+            <if test="recovered != null"> recovered=#{recovered}</if>
+            <if test="deaths != null">deaths=#{deaths}</if>
+        </set>
+        where country = #{country}
+    </update>
+</mapper>
