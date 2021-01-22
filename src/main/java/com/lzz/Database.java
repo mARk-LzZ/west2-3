@@ -32,10 +32,10 @@ public class Database {
 
         JSONObject jsonObject1=jsonObject.getJSONObject(countrys);
         Set<String> set=jsonObject1.keySet();
-        Object[] list=set.toArray();
-        JSONObject countryForProv=(JSONObject) jsonObject.getJSONObject(countrys).get(list[0]);
-        for (int i=0; i < list.length; i++) {
-            String key=(String) list[i];
+        Object[] keys=set.toArray();
+        JSONObject countryForProv=(JSONObject) jsonObject.getJSONObject(countrys).get(keys[0]);
+        for (int i=0; i < keys.length; i++) {
+            String key=(String) keys[i];
             if (i == 0) {
                 JSONObject jsonObject5=(JSONObject) jsonObject.getJSONObject(countrys).get(key);
                 InputStream inputStream=null;
