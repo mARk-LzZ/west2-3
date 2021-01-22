@@ -15,8 +15,8 @@ public class Controller {
 
 
 //        select data
-        Database.selectCoun("China");
-        Database.selectProv("Gansu");
+//        Database.selectCoun("China");
+//        Database.selectProv("Gansu");
 
 
 //        update data
