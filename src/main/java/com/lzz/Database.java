@@ -35,9 +35,9 @@ public class Database {
         JSONObject countryForProv=(JSONObject) jsonObject.getJSONObject(countrys).get(keys[0]); // 此JSONObject对象为国家的键 即All
         for (int i=0; i < keys.length; i++) { // 循环遍历取出数组中的键
             String key=(String) keys[i];
+            JSONObject jsonObject5=(JSONObject) jsonObject.getJSONObject(countrys).get(key);
+            InputStream inputStream=null; //mybatis数据库操作
             if (i == 0) { //获取“All” 对应的所有value
-                JSONObject jsonObject5=(JSONObject) jsonObject.getJSONObject(countrys).get(key);
-                InputStream inputStream=null; //mybatis数据库操作
                 try {
                     inputStream=Resources.getResourceAsStream("SqlMapConfig.xml");
                 } catch (IOException e) {
@@ -65,8 +65,6 @@ public class Database {
                 sqlSession.commit();//提交数据
                 sqlSession.close(); //回收资源
             } else { //获取除了 “All” 以外所有地区省市的value
-                JSONObject jsonObject5=(JSONObject) jsonObject.getJSONObject(countrys).get(key);
-                InputStream inputStream=null;
                 try {
                     inputStream=Resources.getResourceAsStream("SqlMapConfig.xml");
                 } catch (IOException e) {
